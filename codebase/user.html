@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>TARS</title>
-        <!--script src = "https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script-->
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TARS</title>
+    <!--script src = "https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script-->
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-pink.min.css" />
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    
+    
+    
+    <style>
+        .mdl-button
+        {
+            background-color: rgb(244,67,54);
+            color:white;
+        }
         
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-pink.min.css" />
-        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-        
-        
-                                                                                            
-        <style>
-            .mdl-button
-            {
-                background-color: rgb(244,67,54);
-                color:white;
-            }
-
-            .mdl-button:hover
-            {
-                background-color: rgb(244,67,54);
-                color:white;
-            }
-        </style>
-    </head>
-    <body>
-
-
+        .mdl-button:hover
+        {
+            background-color: rgb(244,67,54);
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    
+    
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-            <header class="mdl-layout__header">
-                <div class="mdl-layout__header-row">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
                 <!-- Title -->
                 <span class="mdl-layout-title">Traffic Ambulance Road Safety</span>
                 <!-- Add spacer, to align navigation to the right -->
@@ -38,97 +38,121 @@
                 <!-- Navigation. We hide it in small screens. -->
                 <nav class="mdl-navigation mdl-layout--large-screen-only">
                     <!-- <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a> -->
-                </nav>
+                        <a class="mdl-navigation__link" href="">Link</a>
+                        <a class="mdl-navigation__link" href="">Link</a>
+                        <a class="mdl-navigation__link" href="">Link</a> -->
+                    </nav>
                 </div>
             </header>
             <div class="mdl-layout__drawer">
                 <span class="mdl-layout-title">Title</span>
                 <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="">Link</a>
-                <a class="mdl-navigation__link" href="">Link</a>
-                <a class="mdl-navigation__link" href="">Link</a>
-                <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
                 </nav>
             </div>
             <main class="mdl-layout__content">
                 <div class="page-content">
                     <center>
-                            <br><br><br>  
+                        <br><br><br>  
                         <button id="report_accident" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button">
-                                Report Accident
-                        </button><br><br>
+                            Report Accident
+                        </button><br><br>               
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button">
-                                Request Status
+                            Request Status
                         </button><br><br>
-
+                        
                     </center>
                 </div>
             </main>
-            </div>
-
-            <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-            <script src="../auth/firebase_init.js"></script>
-
-            <script>
-
-               // var i = "https://tars-cb0de.firebaseio.com/incoming_request";
-
-               var database = firebase.database();
-                //var firebaseRef = new Firebase("https://tars-cb0de.firebaseio.com/");
-
+        </div>
+        
+        <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+        <script src="../auth/firebase_init.js"></script>
+        
+        <script>
             
-               document.querySelector("#report_accident").addEventListener("click",function(event)
-               {
-                    var report_data = {
-                        lat:80.9,
-                        long:12.3,
-                        timestamp:new Date().getTime()
+            // var i = "https://tars-cb0de.firebaseio.com/incoming_request";
+            
+            var database = firebase.database();
+            //var firebaseRef = new Firebase("https://tars-cb0de.firebaseio.com/");
+            var lat,long;
+
+            function getLocation() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(showPosition);
+                       
+                        
+                    } else { 
+                        console.log("Naa hoopayee");
                     }
-                      writeUserData(report_data);
-               });
-
-            //    function writeUserData(report_data)
-            //    {
-            
-            //         firebase.database().child("incoming_request").push(report_data);
-            //    }
-
-               function writeUserData(report_data) {
-                database.ref("incoming_request/").push(report_data);
+                }
+                function showPosition(position) {
+                    lat = position.coords.latitude;
+                        long = position.coords.longitude;
+                        console.log(lat);
+                        console.log(long);
+                           
+                        }
+                function writeUserData(report_data) {
+                    database.ref("incoming_request/").push(report_data);
                 }
 
-            //    function sendData()
-            //     {
-            //         fetch(url,
-            //             {
-            //             method:"POST",
-            //             headers:
-            //             {
-            //                 "Content-Type":"application/json",
-            //                 "Accept":"application/json"
-            //             },
-            //             body:JSON.stringify(
-            //             {
-            //                 lat:22,
-            //                 long:12,
-            //                 timestamp:new Date(),
-                        
 
-            //             })
-            //             }).then(function(res)
-            //             {
-            //             console.log("Data uploaded",res);
-            //            // updateUI();
-            //             })
-            //     }
-            </script>
-
-           
-
-        
-
-    </body>
-</html>
+            
+            document.querySelector("#report_accident").addEventListener("click",function(event)
+            {
+                getLocation();
+                var report_data = {
+                    lat:lat,
+                    long:long,
+                    timestamp:new Date().getTime()
+                }
+                writeUserData(report_data);
+            });
+            
+            //    function writeUserData(report_data)
+            //    {
+                
+                //         firebase.database().child("incoming_request").push(report_data);
+                //    }
+               
+                
+                //    function sendData()
+                //     {
+                    //         fetch(url,
+                    //             {
+                        //             method:"POST",
+                        //             headers:
+                        //             {
+                            //                 "Content-Type":"application/json",
+                            //                 "Accept":"application/json"
+                            //             },
+                            //             body:JSON.stringify(
+                            //             {
+                                //                 lat:22,
+                                //                 long:12,
+                                //                 timestamp:new Date(),
+                                
+                                
+                                //             })
+                                //             }).then(function(res)
+                                //             {
+                                    //             console.log("Data uploaded",res);
+                                    //            // updateUI();
+                                    //             })
+                                    //     }
+                                </script>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                            </body>
+                            </html>
