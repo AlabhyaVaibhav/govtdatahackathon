@@ -1,0 +1,19 @@
+{
+  "name": "govtdatahackathon",
+  "version": "1.0.0",
+  "description": "Data Hackathon project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlabhyaVaibhav/govtdatahackathon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlabhyaVaibhav/govtdatahackathon/issues"
+  },
+  "homepage": "https://github.com/AlabhyaVaibhav/govtdatahackathon#readme"
+}
