@@ -76,6 +76,7 @@
         
         <script>
             
+<<<<<<< HEAD
             // var i = "https://tars-cb0de.firebaseio.com/incoming_request";
             
             var database = firebase.database();
@@ -89,6 +90,15 @@
                         
                     } else { 
                         console.log("Naa hoopayee");
+=======
+               document.querySelector("#report_accident").addEventListener("click",function(event)
+               {
+                    var report_data = {
+                        lat:80.9,
+                        long:12.3,
+                        timestamp:new Date().getTime(),
+                        pending:1
+>>>>>>> 5094a7aed12c4dbe71a12c615bc91fc05e3450c4
                     }
                 }
                 function showPosition(position) {
