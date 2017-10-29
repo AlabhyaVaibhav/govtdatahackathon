@@ -63,6 +63,8 @@
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button">
                             Request Status
                         </button><br><br>
+
+                        <h4 class="status"></h4>
                         
                     </center>
                 </div>
@@ -111,7 +113,17 @@
                     timestamp:new Date().getTime()
                 }
                 writeUserData(report_data);
+
+            
+               setTimeout(function()
+               {
+                   document.querySelector(".status").textContent = "Ambulance enroute";
+               },4000);
+        
             });
+
+
+
             
             //    function writeUserData(report_data)
             //    {
